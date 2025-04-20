@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
     from homeassistant.loader import Integration
 
-    from .api import IntegrationBlueprintApiClient
+    from .api import CTCEcozenithApi
     from .coordinator import BlueprintDataUpdateCoordinator
 
 
@@ -18,8 +18,8 @@ type IntegrationBlueprintConfigEntry = ConfigEntry[IntegrationBlueprintData]
 
 @dataclass
 class IntegrationBlueprintData:
-    """Data for the Blueprint integration."""
+    """Data for the CTC Ecozenith integration."""
 
-    client: IntegrationBlueprintApiClient
+    client: CTCEcozenithApi
     coordinator: BlueprintDataUpdateCoordinator
     integration: Integration

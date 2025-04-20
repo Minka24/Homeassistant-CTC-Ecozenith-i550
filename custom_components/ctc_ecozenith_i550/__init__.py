@@ -11,54 +11,47 @@ from datetime import timedelta
 from typing import TYPE_CHECKING
 
 from homeassistant.const import Platform
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.components.modbus import get_hub
 from homeassistant.loader import async_get_loaded_integration
 
-from .api import IntegrationBlueprintApiClient
+from .api import CTCEcozenithApi
 from .const import DOMAIN, LOGGER
 from .coordinator import BlueprintDataUpdateCoordinator
 from .data import IntegrationBlueprintData
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
-
     from .data import IntegrationBlueprintConfigEntry
 
 PLATFORMS: list[Platform] = [
     Platform.SENSOR,
-    Platform.BINARY_SENSOR,
-    Platform.SWITCH,
 ]
 
-
-# https://developers.home-assistant.io/docs/config_entries_index/#setting-up-an-entry
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: IntegrationBlueprintConfigEntry,
 ) -> bool:
     """Set up this integration using UI."""
+    hub = get_hub(hass, entry.data["hub"])
+    
     coordinator = BlueprintDataUpdateCoordinator(
         hass=hass,
         logger=LOGGER,
         name=DOMAIN,
-        update_interval=timedelta(hours=1),
+        update_interval=timedelta(minutes=1),  # Update more frequently for temperature readings
     )
+    
     entry.runtime_data = IntegrationBlueprintData(
-        client=IntegrationBlueprintApiClient(
-            session=async_get_clientsession(hass),
-        ),
+        client=CTCEcozenithApi(hub=hub),
         integration=async_get_loaded_integration(hass, entry.domain),
         coordinator=coordinator,
     )
 
-    # https://developers.home-assistant.io/docs/integration_fetching_data#coordinated-single-api-poll-for-data-for-all-entities
     await coordinator.async_config_entry_first_refresh()
-
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     entry.async_on_unload(entry.add_update_listener(async_reload_entry))
 
     return True
-
 
 async def async_unload_entry(
     hass: HomeAssistant,
