@@ -9,12 +9,12 @@ from homeassistant.const import (
     CONF_PORT,
     CONF_TYPE,
 )
-from homeassistant.components.modbus import (
-    CONF_HUB,
-    DEFAULT_HUB,
+from homeassistant.components.modbus.const import (
     DEFAULT_PORT,
-    DEFAULT_TYPE,
+    DEFAULT_NAME,
+    DEFAULT_TCP,
 )
+from homeassistant.data_entry_flow import FlowResult
 
 from .const import DOMAIN
 
@@ -23,7 +23,7 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
         vol.Required(CONF_NAME, default="CTC Ecozenith"): str,
         vol.Required(CONF_HOST): str,
         vol.Required(CONF_PORT, default=DEFAULT_PORT): int,
-        vol.Required(CONF_TYPE, default=DEFAULT_TYPE): str,
+        vol.Required(CONF_TYPE, default=DEFAULT_TCP): str,
     }
 )
 
@@ -38,7 +38,7 @@ class CTCEcozenithConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             # Create Modbus hub config entry
-            hub_name = DEFAULT_HUB
+            hub_name = DEFAULT_NAME
             modbus_data = {
                 CONF_NAME: hub_name,
                 CONF_HOST: user_input[CONF_HOST],
@@ -55,7 +55,7 @@ class CTCEcozenithConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 title=user_input[CONF_NAME],
                 data={
                     **user_input,
-                    CONF_HUB: hub_name,
+                    "hub": hub_name,  # Use string literal instead of constant
                     "modbus_data": modbus_data,
                 },
             )
