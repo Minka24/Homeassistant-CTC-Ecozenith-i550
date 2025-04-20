@@ -11,7 +11,13 @@ from datetime import timedelta
 from typing import TYPE_CHECKING
 
 from homeassistant.const import Platform
-from homeassistant.components.modbus import get_hub
+from homeassistant.components.modbus import (
+    get_hub,
+    MODBUS_DOMAIN,
+)
+from homeassistant.const import (
+    CONF_HUB,
+)
 from homeassistant.loader import async_get_loaded_integration
 
 from .api import CTCEcozenithApi
@@ -32,7 +38,17 @@ async def async_setup_entry(
     entry: IntegrationBlueprintConfigEntry,
 ) -> bool:
     """Set up this integration using UI."""
-    hub = get_hub(hass, entry.data["hub"])
+    # Set up modbus hub if not already configured
+    if MODBUS_DOMAIN not in hass.data:
+        hass.data[MODBUS_DOMAIN] = {}
+    
+    if entry.data[CONF_HUB] not in hass.data[MODBUS_DOMAIN]:
+        # Create and store modbus hub
+        await hass.config_entries.async_forward_entry_setup(
+            entry, MODBUS_DOMAIN
+        )
+    
+    hub = get_hub(hass, entry.data[CONF_HUB])
     
     coordinator = BlueprintDataUpdateCoordinator(
         hass=hass,
