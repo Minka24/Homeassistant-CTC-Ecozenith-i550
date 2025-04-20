@@ -1,12 +1,15 @@
-"""Sample API Client."""
+"""CTC Ecozenith i550 API Client."""
 
 from __future__ import annotations
 
+import asyncio
 import socket
 from typing import Any
 
 import aiohttp
 import async_timeout
+from homeassistant.components.modbus import ModbusHub
+from homeassistant.const import UnitOfTemperature
 
 
 class IntegrationBlueprintApiClientError(Exception):
@@ -33,6 +36,51 @@ def _verify_response_or_raise(response: aiohttp.ClientResponse) -> None:
             msg,
         )
     response.raise_for_status()
+
+
+class CTCEcozenithModbusError(Exception):
+    """Exception class for Modbus errors."""
+
+
+class CTCEcozenithApi:
+    """CTC Ecozenith i550 API client."""
+
+    def __init__(self, hub: ModbusHub) -> None:
+        """Initialize the API client."""
+        self._hub = hub
+        self._lock = asyncio.Lock()
+
+    async def async_read_holding_registers(self, address: int, count: int) -> list[int]:
+        """Read holding registers."""
+        async with self._lock:
+            result = await self._hub.async_read_holding_registers(
+                slave=1,  # Default slave address
+                address=address,
+                count=count,
+            )
+            if result.isError():
+                raise CTCEcozenithModbusError(f"Error reading registers: {result}")
+            return result.registers
+
+    async def async_read_temperature(self, address: int) -> float:
+        """Read temperature value from register."""
+        registers = await self.async_read_holding_registers(address, 1)
+        return float(registers[0]) / 10.0
+
+    async def async_get_data(self) -> dict[str, Any]:
+        """Get data from the heat pump."""
+        try:
+            data = {
+                "outdoor_temp": await self.async_read_temperature(62000),
+                "stop_temperature_dhw ": await self.async_read_temperature(62001), 
+                "hot_water_temp": await self.async_read_temperature(62002),
+                "setpoint_outlet_temperature_dhw": await self.async_read_temperature(62003),
+                "hot_water_temperature": await self.async_read_temperature(62006),
+                "radiator_water": UnitOfTemperature.CELSIUS
+            }
+            return data
+        except Exception as ex:
+            raise CTCEcozenithModbusError(f"Error getting data: {ex}") from ex
 
 
 class IntegrationBlueprintApiClient:

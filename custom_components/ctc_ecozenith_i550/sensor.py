@@ -1,57 +1,87 @@
-"""Sensor platform for ctc_ecozenith_i550."""
+"""Sensor platform for CTC Ecozenith i550."""
 
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from homeassistant.components.sensor import SensorEntity, SensorEntityDescription
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorEntity, 
+    SensorEntityDescription,
+)
+from homeassistant.const import UnitOfTemperature
 
-from .entity import IntegrationBlueprintEntity
+from .const import DOMAIN
+from .entity import CTCEcozenithEntity
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
     from homeassistant.helpers.entity_platform import AddEntitiesCallback
+    from homeassistant.config_entries import ConfigEntry
 
-    from .coordinator import BlueprintDataUpdateCoordinator
-    from .data import IntegrationBlueprintConfigEntry
-
-ENTITY_DESCRIPTIONS = (
+TEMPERATURE_SENSORS = (
     SensorEntityDescription(
-        key="ctc_ecozenith_i550",
-        name="Integration Sensor",
-        icon="mdi:format-quote-close",
+        key="outdoor_temp",
+        name="Outdoor Temperature",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+    ),
+    SensorEntityDescription(
+        key="indoor_temp",
+        name="Indoor Temperature",
+        device_class=SensorDeviceClass.TEMPERATURE, 
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+    ),
+    SensorEntityDescription(
+        key="hot_water_temp",
+        name="Hot Water Temperature",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS, 
+    ),
+    SensorEntityDescription(
+        key="tank_temp",
+        name="Tank Temperature",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
+    ),
+    SensorEntityDescription(
+        key="heating_circuit_temp", 
+        name="Heating Circuit Temperature",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
     ),
 )
 
-
 async def async_setup_entry(
-    hass: HomeAssistant,  # noqa: ARG001 Unused function argument: `hass`
-    entry: IntegrationBlueprintConfigEntry,
+    hass: HomeAssistant,
+    entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up the sensor platform."""
+    coordinator = hass.data[DOMAIN][entry.entry_id]
+    
     async_add_entities(
-        IntegrationBlueprintSensor(
-            coordinator=entry.runtime_data.coordinator,
-            entity_description=entity_description,
+        CTCEcozenithSensor(
+            coordinator=coordinator,
+            entity_description=description,
         )
-        for entity_description in ENTITY_DESCRIPTIONS
+        for description in TEMPERATURE_SENSORS
     )
 
-
-class IntegrationBlueprintSensor(IntegrationBlueprintEntity, SensorEntity):
-    """ctc_ecozenith_i550 Sensor class."""
+class CTCEcozenithSensor(CTCEcozenithEntity, SensorEntity):
+    """CTC Ecozenith temperature sensor."""
 
     def __init__(
         self,
-        coordinator: BlueprintDataUpdateCoordinator,
+        coordinator: Any,
         entity_description: SensorEntityDescription,
     ) -> None:
-        """Initialize the sensor class."""
+        """Initialize the sensor."""
         super().__init__(coordinator)
         self.entity_description = entity_description
+        self._attr_unique_id = f"{DOMAIN}_{entity_description.key}"
 
     @property
-    def native_value(self) -> str | None:
-        """Return the native value of the sensor."""
-        return self.coordinator.data.get("body")
+    def native_value(self) -> float | None:
+        """Return the sensor value."""
+        return self.coordinator.data.get(self.entity_description.key)
