@@ -14,11 +14,9 @@ from homeassistant.components.modbus import (
     DEFAULT_HUB,
     DEFAULT_PORT,
     DEFAULT_TYPE,
-    MODBUS_DOMAIN,
 )
-from homeassistant.data_entry_flow import FlowResult
 
-from .const import DOMAIN, LOGGER
+from .const import DOMAIN
 
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {
