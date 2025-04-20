@@ -12,7 +12,6 @@ from typing import TYPE_CHECKING
 
 from homeassistant.const import Platform
 from homeassistant.components.modbus import (
-    CONF_HUB,
     get_hub,
     DOMAIN as MODBUS_DOMAIN,
 )
@@ -40,13 +39,13 @@ async def async_setup_entry(
     if MODBUS_DOMAIN not in hass.data:
         hass.data[MODBUS_DOMAIN] = {}
     
-    if entry.data[CONF_HUB] not in hass.data[MODBUS_DOMAIN]:
+    if entry.data["hub"] not in hass.data[MODBUS_DOMAIN]:
         # Create and store modbus hub
         await hass.config_entries.async_forward_entry_setup(
             entry, MODBUS_DOMAIN
         )
     
-    hub = get_hub(hass, entry.data[CONF_HUB])
+    hub = get_hub(hass, entry.data["hub"])
     
     coordinator = BlueprintDataUpdateCoordinator(
         hass=hass,
