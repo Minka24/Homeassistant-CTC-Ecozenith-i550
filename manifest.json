@@ -1,0 +1,18 @@
+{
+  "domain": "ctc_ecozenith_i550",
+  "name": "CTC Ecozenith i550",
+  "version": "1.0.0",
+  "documentation": "https://github.com/yourusername/ctc_ecozenith_i550",
+  "requirements": [
+    "pymodbus"
+  ],
+  "dependencies": [],
+  "codeowners": [
+    "@yourusername"
+  ],
+  "iot_class": "local_polling",
+  "config_flow": true,
+  "dhcp": false,
+  "zeroconf": [],
+  "homekit": {}
+}
