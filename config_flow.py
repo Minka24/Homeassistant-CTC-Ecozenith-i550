@@ -18,11 +18,6 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
         vol.Required(CONF_NAME, default=DEFAULT_NAME): str,
         vol.Required(CONF_HOST): str,
         vol.Required(CONF_PORT, default=DEFAULT_PORT): int,
-        vol.Required("has_cooling", default=True): bool,
-        vol.Required("num_heating_systems", default=1): vol.All(
-            int, vol.Range(min=0, max=4)
-        ),
-        vol.Required("has_solar", default=False): bool,
     }
 )
 
