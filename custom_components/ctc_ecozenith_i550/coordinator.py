@@ -5,10 +5,10 @@ from __future__ import annotations
 from datetime import timedelta
 import logging
 
+from pymodbus.client import ModbusTcpClient
+
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
-
-from pymodbus.client import ModbusTcpClient
 
 from .const import DOMAIN
 
@@ -40,10 +40,9 @@ class CTCEcozenithDataUpdateCoordinator(DataUpdateCoordinator[dict]):
             if not self._client.connected:
                 if not await self.hass.async_add_executor_job(self._client.connect):
                     raise UpdateFailed("Could not connect to Modbus device")
-            data = await self.hass.async_add_executor_job(
+            return await self.hass.async_add_executor_job(
                 self.update_method, self._client
             )
-            return data
         except Exception as err:
             raise UpdateFailed(
                 f"Error communicating with the heat pump: {err}"
@@ -51,8 +50,6 @@ class CTCEcozenithDataUpdateCoordinator(DataUpdateCoordinator[dict]):
 
     async def async_write_register(self, address: int, value: int) -> None:
         """Write a value to a Modbus register asynchronously."""
-        from pymodbus.payload import BinaryPayloadBuilder
-        from pymodbus.constants import Endian
 
         # Ensure connection
         if not self._client.connected:

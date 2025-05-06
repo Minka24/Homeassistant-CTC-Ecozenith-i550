@@ -7,8 +7,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from . import BMS_REGISTERS
-from .const import DOMAIN
+from .const import BMS_REGISTERS, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -45,8 +44,9 @@ async def async_setup_entry(
 class CTCNumberEntity(NumberEntity):
     """Number entity for CTC Ecozenith i550."""
 
-    def __init__(self, coordinator, description, feature_register):
+    def __init__(self, coordinator, description, feature_register: object) -> None:
         """Initialize the number entity."""
+
         self.coordinator = coordinator
         self.entity_description = description
         self.feature_register = feature_register

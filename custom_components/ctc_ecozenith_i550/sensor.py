@@ -2,17 +2,16 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+import logging
+
 from homeassistant.components.sensor import (
+    SensorDeviceClass,
     SensorEntity,
     SensorEntityDescription,
-    SensorDeviceClass,
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.entity import Entity
-from homeassistant.helpers.entity_registry import EntityRegistry
 
 from .const import DOMAIN
 
@@ -3175,8 +3174,6 @@ SENSOR_DESCRIPTIONS = [
     ),
     # ...existing code...
 ]
-
-import logging
 
 _logger = logging.getLogger(__name__)
 

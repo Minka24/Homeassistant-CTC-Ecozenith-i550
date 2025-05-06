@@ -3,16 +3,15 @@
 from __future__ import annotations
 
 import asyncio
-
 from dataclasses import dataclass
-from typing import Any
 from datetime import timedelta
-from homeassistant.helpers.event import async_track_time_interval
+from typing import Any
 
 from homeassistant.components.select import SelectEntity, SelectEntityDescription
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.event import async_track_time_interval
 
 from .const import DOMAIN
 
@@ -339,7 +338,9 @@ async def async_setup_entry(
 class CTCEcozenithSGModeSelect(CTCEcozenithSelect):
     """SmartGrid select entity with periodic write."""
 
-    def __init__(self, coordinator, description):
+    def __init__(self, coordinator, description) -> None:
+        """Initialize the SmartGrid select entity."""
+
         super().__init__(coordinator, description)
         self._unsub_timer = None
         self._write_lock = asyncio.Lock()

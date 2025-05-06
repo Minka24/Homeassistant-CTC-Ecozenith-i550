@@ -12,7 +12,6 @@ from homeassistant.core import callback
 
 from .const import DEFAULT_NAME, DEFAULT_PORT, DOMAIN
 
-
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_NAME, default=DEFAULT_NAME): str,
