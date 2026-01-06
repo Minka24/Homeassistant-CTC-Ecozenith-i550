@@ -1,6 +1,6 @@
 """Constants for CTC Ecozenith i550 integration."""
 
-from config.custom_components.ctc_ecozenith_i550.feature_register import FeatureRegister
+from .feature_register import FeatureRegister
 
 DOMAIN = "ctc_ecozenith_i550"
 DEFAULT_NAME = "CTC Ecozenith i550"
@@ -1976,6 +1976,7 @@ BMS_REGISTERS = {
         visible_adresss=62531,
         visible_bit=4,
         scale=0.1,
+        signed=True,
     ),
     "stop_temp_dhw": FeatureRegister(
         address=62001,
@@ -3650,6 +3651,7 @@ BMS_REGISTERS = {
         visible_adresss=62542,
         visible_bit=14,
         scale=1,
+        signed=False, 
     ),
     "stat_immersion_heater_kwh": FeatureRegister(
         address=62191,
@@ -3866,6 +3868,7 @@ BMS_REGISTERS = {
         visible_adresss=62544,
         visible_bit=10,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_2_compressor_operating_time_lsb": FeatureRegister(
         address=62216,
@@ -3875,6 +3878,7 @@ BMS_REGISTERS = {
         visible_adresss=62544,
         visible_bit=12,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_3_compressor_operating_time_lsb": FeatureRegister(
         address=62218,
@@ -3884,6 +3888,7 @@ BMS_REGISTERS = {
         visible_adresss=62544,
         visible_bit=14,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_4_compressor_operating_time_lsb": FeatureRegister(
         address=62220,
@@ -3893,6 +3898,7 @@ BMS_REGISTERS = {
         visible_adresss=62545,
         visible_bit=0,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_5_compressor_operating_time_lsb": FeatureRegister(
         address=62222,
@@ -3902,6 +3908,7 @@ BMS_REGISTERS = {
         visible_adresss=62545,
         visible_bit=2,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_6_compressor_operating_time_lsb": FeatureRegister(
         address=62224,
@@ -3911,6 +3918,7 @@ BMS_REGISTERS = {
         visible_adresss=62545,
         visible_bit=4,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_7_compressor_operating_time_lsb": FeatureRegister(
         address=62226,
@@ -3920,6 +3928,7 @@ BMS_REGISTERS = {
         visible_adresss=62545,
         visible_bit=6,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_8_compressor_operating_time_lsb": FeatureRegister(
         address=62228,
@@ -3929,6 +3938,7 @@ BMS_REGISTERS = {
         visible_adresss=62545,
         visible_bit=8,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_9_compressor_operating_time_lsb": FeatureRegister(
         address=62230,
@@ -3938,6 +3948,7 @@ BMS_REGISTERS = {
         visible_adresss=62545,
         visible_bit=10,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_10_compressor_operating_time_lsb": FeatureRegister(
         address=62232,
@@ -3947,6 +3958,7 @@ BMS_REGISTERS = {
         visible_adresss=62545,
         visible_bit=12,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_1_compressor_last_24h": FeatureRegister(
         address=62234,
@@ -3956,6 +3968,7 @@ BMS_REGISTERS = {
         visible_adresss=62545,
         visible_bit=14,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_2_compressor_last_24h": FeatureRegister(
         address=62235,
@@ -3965,6 +3978,7 @@ BMS_REGISTERS = {
         visible_adresss=62545,
         visible_bit=15,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_3_compressor_last_24h": FeatureRegister(
         address=62236,
@@ -3974,6 +3988,7 @@ BMS_REGISTERS = {
         visible_adresss=62546,
         visible_bit=0,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_4_compressor_last_24h": FeatureRegister(
         address=62237,
@@ -3983,6 +3998,7 @@ BMS_REGISTERS = {
         visible_adresss=62546,
         visible_bit=1,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_5_compressor_last_24h": FeatureRegister(
         address=62238,
@@ -3992,6 +4008,7 @@ BMS_REGISTERS = {
         visible_adresss=62546,
         visible_bit=2,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_6_compressor_last_24h": FeatureRegister(
         address=62239,
@@ -4001,6 +4018,7 @@ BMS_REGISTERS = {
         visible_adresss=62546,
         visible_bit=3,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_7_compressor_last_24h": FeatureRegister(
         address=62240,
@@ -4010,6 +4028,7 @@ BMS_REGISTERS = {
         visible_adresss=62546,
         visible_bit=4,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_8_compressor_last_24h": FeatureRegister(
         address=62241,
@@ -4019,6 +4038,7 @@ BMS_REGISTERS = {
         visible_adresss=62546,
         visible_bit=5,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_9_compressor_last_24h": FeatureRegister(
         address=62242,
@@ -4028,6 +4048,7 @@ BMS_REGISTERS = {
         visible_adresss=62546,
         visible_bit=6,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_10_compressor_last_24h": FeatureRegister(
         address=62243,
@@ -4037,6 +4058,7 @@ BMS_REGISTERS = {
         visible_adresss=62546,
         visible_bit=7,
         scale=1,
+        signed=False, 
     ),
     "software_version_display_month_day": FeatureRegister(
         address=62244,
@@ -4550,6 +4572,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=3,
         scale=1,
+        signed=False, 
     ),
     "radiator_pump_1": FeatureRegister(
         address=62304,
@@ -4559,6 +4582,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=4,
         scale=1,
+        signed=False, 
     ),
     "radiator_pump_2": FeatureRegister(
         address=62305,
@@ -4568,6 +4592,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=5,
         scale=1,
+        signed=False, 
     ),
     "radiator_pump_3_g3": FeatureRegister(
         address=62306,
@@ -4577,6 +4602,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=6,
         scale=1,
+        signed=False, 
     ),
     "radiator_pump_4_g4": FeatureRegister(
         address=62307,
@@ -4586,6 +4612,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=7,
         scale=1,
+        signed=False, 
     ),
     "hs_1_shunt_state": FeatureRegister(
         address=62308,
@@ -4595,6 +4622,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=8,
         scale=1,
+        signed=False, 
     ),
     "hs_2_shunt_state": FeatureRegister(
         address=62309,
@@ -4604,6 +4632,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=9,
         scale=1,
+        signed=False, 
     ),
     "hs_3_shunt_state": FeatureRegister(
         address=62310,
@@ -4613,6 +4642,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=10,
         scale=1,
+        signed=False, 
     ),
     "hs_4_shunt_state": FeatureRegister(
         address=62311,
@@ -4622,6 +4652,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=11,
         scale=1,
+        signed=False, 
     ),
     "pumpg41_extern_dhw": FeatureRegister(
         address=62312,
@@ -4631,6 +4662,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=12,
         scale=1,
+        signed=False, 
     ),
     "hotwatervalve": FeatureRegister(
         address=62313,
@@ -4640,6 +4672,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=13,
         scale=1,
+        signed=False, 
     ),
     "extboileron": FeatureRegister(
         address=62314,
@@ -4649,6 +4682,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=14,
         scale=1,
+        signed=False, 
     ),
     "el1_relay": FeatureRegister(
         address=62315,
@@ -4658,6 +4692,7 @@ BMS_REGISTERS = {
         visible_adresss=62550,
         visible_bit=15,
         scale=1,
+        signed=False, 
     ),
     "el2_relay": FeatureRegister(
         address=62316,
@@ -4667,6 +4702,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=0,
         scale=1,
+        signed=False, 
     ),
     "el3_relay": FeatureRegister(
         address=62317,
@@ -4676,6 +4712,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=1,
         scale=1,
+        signed=False, 
     ),
     "elheater3_6kw": FeatureRegister(
         address=62318,
@@ -4685,6 +4722,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=2,
         scale=1,
+        signed=False, 
     ),
     "evk_shunt_state": FeatureRegister(
         address=62319,
@@ -4694,6 +4732,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=3,
         scale=1,
+        signed=False, 
     ),
     "extboiler_shunt_state": FeatureRegister(
         address=62320,
@@ -4703,6 +4742,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=4,
         scale=1,
+        signed=False, 
     ),
     "active_cooling_valve": FeatureRegister(
         address=62321,
@@ -4712,6 +4752,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=5,
         scale=1,
+        signed=False, 
     ),
     "active_cooling_demand": FeatureRegister(
         address=62322,
@@ -4721,6 +4762,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=6,
         scale=1,
+        signed=False, 
     ),
     "dhwpump": FeatureRegister(
         address=62323,
@@ -4730,6 +4772,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=7,
         scale=1,
+        signed=False, 
     ),
     "solartankselection": FeatureRegister(
         address=62324,
@@ -4739,6 +4782,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=8,
         scale=1,
+        signed=False, 
     ),
     "solarbedrockselection": FeatureRegister(
         address=62325,
@@ -4748,6 +4792,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=9,
         scale=1,
+        signed=False, 
     ),
     "hotwatervalve2": FeatureRegister(
         address=62326,
@@ -4757,6 +4802,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=10,
         scale=1,
+        signed=False, 
     ),
     "e4": FeatureRegister(
         address=62327,
@@ -4766,6 +4812,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=11,
         scale=1,
+        signed=False, 
     ),
     "e1": FeatureRegister(
         address=62328,
@@ -4775,6 +4822,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=12,
         scale=1,
+        signed=False, 
     ),
     "stat_immersion_heater_kwh_msb": FeatureRegister(
         address=62329,
@@ -4784,6 +4832,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=13,
         scale=1,
+        signed=False, 
     ),
     "current_room_temp_cooling": FeatureRegister(
         address=62330,
@@ -4802,6 +4851,7 @@ BMS_REGISTERS = {
         visible_adresss=62551,
         visible_bit=15,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_2_power_consumption_kw": FeatureRegister(
         address=62332,
@@ -4811,6 +4861,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=0,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_3_power_consumption_kw": FeatureRegister(
         address=62333,
@@ -4820,6 +4871,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=1,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_4_power_consumption_kw": FeatureRegister(
         address=62334,
@@ -4829,6 +4881,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=2,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_5_power_consumption_kw": FeatureRegister(
         address=62335,
@@ -4838,6 +4891,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=3,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_6_power_consumption_kw": FeatureRegister(
         address=62336,
@@ -4847,6 +4901,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=4,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_7_power_consumption_kw": FeatureRegister(
         address=62337,
@@ -4856,6 +4911,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=5,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_8_power_consumption_kw": FeatureRegister(
         address=62338,
@@ -4865,6 +4921,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=6,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_9_power_consumption_kw": FeatureRegister(
         address=62339,
@@ -4874,6 +4931,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=7,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_10_power_consumption_kw": FeatureRegister(
         address=62340,
@@ -4883,6 +4941,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=8,
         scale=0.1,
+        signed=False, 
     ),
     "heat_pump_1_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62341,
@@ -4892,6 +4951,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=9,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_1_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62342,
@@ -4901,6 +4961,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=10,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_2_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62343,
@@ -4910,6 +4971,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=11,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_2_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62344,
@@ -4919,6 +4981,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=12,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_3_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62345,
@@ -4928,6 +4991,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=13,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_3_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62346,
@@ -4937,6 +5001,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=14,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_4_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62347,
@@ -4946,6 +5011,7 @@ BMS_REGISTERS = {
         visible_adresss=62552,
         visible_bit=15,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_4_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62348,
@@ -4955,6 +5021,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=0,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_5_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62349,
@@ -4964,6 +5031,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=1,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_5_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62350,
@@ -4973,6 +5041,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=2,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_6_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62351,
@@ -4982,6 +5051,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=3,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_6_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62352,
@@ -4991,6 +5061,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=4,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_7_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62353,
@@ -5000,6 +5071,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=5,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_7_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62354,
@@ -5009,6 +5081,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=6,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_8_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62355,
@@ -5018,6 +5091,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=7,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_8_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62356,
@@ -5027,6 +5101,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=8,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_9_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62357,
@@ -5036,6 +5111,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=9,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_9_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62358,
@@ -5045,6 +5121,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=10,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_10_compressor_power_consumption_kwh_lsb": FeatureRegister(
         address=62359,
@@ -5054,6 +5131,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=11,
         scale=1,
+        signed=False, 
     ),
     "heat_pump_10_compressor_power_consumption_kwh_msb": FeatureRegister(
         address=62360,
@@ -5063,6 +5141,7 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=12,
         scale=1,
+        signed=False, 
     ),
     "power_kw_immersion_heaters": FeatureRegister(
         address=62361,
@@ -5072,5 +5151,6 @@ BMS_REGISTERS = {
         visible_adresss=62553,
         visible_bit=13,
         scale=0.1,
+        signed=False, 
     ),
 }

@@ -3,9 +3,7 @@
   "name": "CTC Ecozenith i550",
   "version": "1.0.0",
   "documentation": "https://github.com/yourusername/ctc_ecozenith_i550",
-  "requirements": [
-    "pymodbus"
-  ],
+  "requirements": [],
   "dependencies": [],
   "codeowners": [
     "@yourusername"

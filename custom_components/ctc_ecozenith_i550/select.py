@@ -45,7 +45,7 @@ HC_HEATING_PROGRAM_MAP = {
     3: "Custom",
 }
 
-HC_HEATING_PROGRAM_REVERSE_MAP = {v: k for k, v in HS_MODE_MAP.items()}
+HC_HEATING_PROGRAM_REVERSE_MAP = {v: k for k, v in HC_HEATING_PROGRAM_MAP.items()}
 
 SG_MODE_MAP = {
     0: "None/Normal",

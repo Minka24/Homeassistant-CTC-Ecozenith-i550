@@ -59,7 +59,7 @@ class CTCEcozenithDataUpdateCoordinator(DataUpdateCoordinator[dict]):
 
         def _write():
             # Write a single register (16 bit)
-            return self._client.write_register(address, value, 1)
+            return self._client.write_register(address, value)
 
         result = await self.hass.async_add_executor_job(_write)
         # Add debug logging
